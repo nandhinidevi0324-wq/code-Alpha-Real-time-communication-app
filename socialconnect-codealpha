@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SocialConnect</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#667eea,#764ba2);
+min-height:100vh;
+padding:30px;
+}
+
+.navbar{
+width:100%;
+padding:15px 30px;
+border-radius:15px;
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(15px);
+display:flex;
+justify-content:space-between;
+align-items:center;
+color:white;
+margin-bottom:30px;
+box-shadow:0 8px 32px rgba(0,0,0,0.2);
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+}
+
+.container{
+max-width:800px;
+margin:auto;
+}
+
+.post-box{
+background:rgba(255,255,255,0.95);
+padding:25px;
+border-radius:20px;
+box-shadow:0 15px 35px rgba(0,0,0,0.2);
+animation:fadeIn .8s ease;
+}
+
+.post-box h2{
+margin-bottom:15px;
+color:#333;
+}
+
+textarea{
+width:100%;
+height:140px;
+padding:15px;
+border-radius:15px;
+border:2px solid #ddd;
+font-size:16px;
+resize:none;
+outline:none;
+transition:.3s;
+}
+
+textarea:focus{
+border-color:#667eea;
+}
+
+input[type=file]{
+margin-top:15px;
+width:100%;
+padding:10px;
+border-radius:10px;
+background:#f4f4f4;
+}
+
+.post-btn{
+width:100%;
+margin-top:15px;
+padding:14px;
+border:none;
+border-radius:15px;
+font-size:18px;
+font-weight:bold;
+background:linear-gradient(45deg,#667eea,#764ba2);
+color:white;
+cursor:pointer;
+transition:.3s;
+}
+
+.post-btn:hover{
+transform:translateY(-3px);
+}
+
+.post{
+background:white;
+margin-top:25px;
+padding:20px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+animation:slideUp .5s ease;
+}
+
+.profile{
+display:flex;
+align-items:center;
+gap:12px;
+margin-bottom:15px;
+}
+
+.avatar{
+width:55px;
+height:55px;
+border-radius:50%;
+background:linear-gradient(45deg,#ff512f,#dd2476);
+}
+
+.username{
+font-size:18px;
+font-weight:bold;
+}
+
+.post img{
+width:100%;
+border-radius:15px;
+margin-top:15px;
+max-height:450px;
+object-fit:cover;
+}
+
+.actions{
+display:flex;
+gap:10px;
+margin-top:15px;
+}
+
+.like,
+.comment{
+padding:10px 18px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.like{
+background:#ff4d6d;
+color:white;
+}
+
+.comment{
+background:#4361ee;
+color:white;
+}
+
+.dark-mode{
+background:#121212;
+}
+
+.dark-mode .post-box,
+.dark-mode .post{
+background:#1f1f1f;
+color:white;
+}
+
+.dark-mode textarea{
+background:#2a2a2a;
+color:white;
+border-color:#444;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes slideUp{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#f0f2f5;
+transition:.3s;
+}
+
+.dark{
+background:#18191a;
+color:white;
+}
+
+.navbar{
+background:linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045);
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+color:white;
+position:sticky;
+top:0;
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+}
+
+.nav-btn{
+padding:8px 15px;
+border:none;
+border-radius:20px;
+cursor:pointer;
+}
+
+.container{
+max-width:700px;
+margin:20px auto;
+padding:10px;
+}
+
+.post-box{
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 4px 10px rgba(0,0,0,.1);
+margin-bottom:20px;
+}
+
+.dark .post-box,
+.dark .post{
+background:#242526;
+}
+
+textarea{
+width:100%;
+height:100px;
+padding:10px;
+border-radius:10px;
+border:1px solid #ccc;
+}
+
+input[type=file]{
+margin-top:10px;
+}
+
+.post-btn{
+margin-top:10px;
+width:100%;
+padding:12px;
+background:#1877f2;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+.post{
+background:white;
+padding:15px;
+border-radius:15px;
+margin-top:20px;
+box-shadow:0 4px 10px rgba(0,0,0,.1);
+}
+
+.profile{
+display:flex;
+align-items:center;
+gap:10px;
+margin-bottom:10px;
+}
+
+.avatar{
+width:45px;
+height:45px;
+border-radius:50%;
+background:linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045);
+}
+
+.post img{
+width:100%;
+border-radius:10px;
+margin-top:10px;
+}
+
+.actions{
+display:flex;
+gap:10px;
+margin-top:10px;
+}
+
+.actions button{
+padding:8px 15px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+.like{
+background:#ff3366;
+color:white;
+}
+
+.comment{
+background:#1877f2;
+color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+<div class="logo">📸 SocialConnect</div>
+<button class="nav-btn" onclick="toggleDarkMode()">🌙 Mode</button>
+</div>
+
+<div class="container">
+
+<div class="post-box">
+
+<h2>Create Post</h2>
+
+<textarea id="postText" placeholder="What's on your mind?"></textarea>
+
+<input type="file" id="imageInput" accept="image/*">
+
+<button class="post-btn" onclick="createPost()">Post</button>
+
+</div>
+
+<div id="posts"></div>
+
+</div>
+
+<script>
+
+function toggleDarkMode(){
+document.body.classList.toggle("dark");
+}
+
+function createPost(){
+
+let text =
+document.getElementById("postText").value;
+
+let file =
+document.getElementById("imageInput").files[0];
+
+if(text==="" && !file){
+alert("Enter text or image");
+return;
+}
+
+const reader = new FileReader();
+
+reader.onload = function(e){
+
+let post = document.createElement("div");
+
+post.className="post";
+
+post.innerHTML=`
+
+<div class="profile">
+<div class="avatar"></div>
+<b>Nandhini</b>
+</div>
+<div class="navbar">
+
+<p>${text}</p>
+
+${file ? <img src="${e.target.result}"> : ''}
+
+<div class="actions">
+<button class="like" onclick="likePost(this)">
+❤️ Like 0
+</button>
+
+<button class="comment">
+💬 Comment
+</button>
+</div>
+<div class="logo">📸 SocialConnect</div>
+<button onclick="toggleDarkMode()" class="post-btn" style="width:auto;padding:10px 20px;">
+🌙 Dark Mode
+</button>
+</div>
+<div class="post">
+
+<div class="profile">
+
+<div class="avatar"></div>
+<div>
+<h3>Nandhini</h3>
+<small>Just Now</small>
+</div>
+
+</div>
+
+<p>
+Welcome to SocialConnect 🚀
+</p>
+
+<img src="https://picsum.photos/600/350">
+
+<!-- ACTION BUTTONS HERE -->
+</div>
+
+`;
+
+document.getElementById("posts").prepend(post);
+
+localStorage.setItem("lastPost",post.innerHTML);
+
+document.getElementById("postText").value="";
+document.getElementById("imageInput").value="";
+};
+
+if(file){
+reader.readAsDataURL(file);
+}else{
+reader.onload({target:{result:""}});
+}
+
+}
+
+function likePost(btn){
+
+let count=parseInt(btn.innerText.split(" ")[2]);
+
+count++;
+
+btn.innerHTML=❤️ Like ${count};
+
+}
+
+</script>
+<<style>
+.actions{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-top:15px;
+}
+
+.actions button{
+border:none;
+padding:10px 15px;
+border-radius:12px;
+font-size:14px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+}
+
+.actions button:hover{
+transform:translateY(-3px);
+}
+
+.like-btn{
+background:#ff4d6d;
+color:white;
+}
+
+.comment-btn{
+background:#4361ee;
+color:white;
+}
+
+.share-btn{
+background:#06d6a0;
+color:white;
+}
+
+.save-btn{
+background:#ff9f1c;
+color:white;
+}
+
+.follow-btn{
+background:#8338ec;
+color:white;
+}
+
+.edit-btn{
+background:#118ab2;
+color:white;
+}
+
+.delete-btn{
+background:#ef233c;
+color:white;
+}
+
+.report-btn{
+background:#6c757d;
+color:white;
+}
+
+.download-btn{
+background:#20c997;
+color:white;
+}
+
+.bookmark-btn{
+background:#ffbe0b;
+color:black;
+}
+</style>
+<script>
+function likePost(btn){
+
+let count =
+btn.querySelector("span");
+
+count.innerText =
+parseInt(count.innerText)+1;
+
+}
+
+function commentPost(){
+
+let comment =
+prompt("Enter Comment");
+
+if(comment){
+alert("Comment Added: "+comment);
+}
+
+}
+
+function sharePost(){
+
+alert("Post Shared Successfully");
+
+}
+
+function savePost(btn){
+
+btn.innerHTML="✅ Saved";
+
+}
+
+function followUser(btn){
+
+if(btn.innerHTML.includes("Follow")){
+
+btn.innerHTML="✔️ Following";
+
+}else{
+
+btn.innerHTML="➕ Follow";
+
+}
+
+}
+
+function editPost(btn){
+
+let post =
+btn.closest(".post");
+
+let text =
+post.querySelector("p");
+
+let updated =
+prompt("Edit Post",text.innerText);
+
+if(updated){
+
+text.innerText=updated;
+
+}
+
+}
+
+function deletePost(btn){
+
+btn.closest(".post").remove();
+
+}
+
+function reportPost(){
+
+alert("Post Reported");
+
+}
+
+function downloadPost(){
+
+alert("Download Started");
+
+}
+
+function bookmarkPost(btn){
+
+if(btn.innerHTML.includes("Bookmark")){
+
+btn.innerHTML="⭐ Bookmarked";
+
+}else{
+
+btn.innerHTML="⭐ Bookmark";
+
+}
+
+}
+</script>
+
+
+
+<div class="post">
+
+<div class="profile">
+
+<div class="avatar"></div>
+
+<div>
+<h3>Nandhini</h3>
+<small>Just Now</small>
+</div>
+
+</div>
+
+<p>
+Welcome to SocialConnect 🚀
+</p>
+
+<img src="connet.jpeg"weight="100" height="6000">
+
+<!-- ACTION BUTTONS HERE -->
+
+<div class="actions">
+
+<button class="like-btn" onclick="likePost(this)">
+❤️ Like <span>0</span>
+</button>
+
+<button class="comment-btn" onclick="commentPost()">
+💬 Comment
+</button>
+
+<button class="share-btn" onclick="sharePost()">
+📤 Share
+</button>
+
+<button class="save-btn" onclick="savePost(this)">
+🔖 Save
+</button>
+
+<button class="follow-btn" onclick="followUser(this)">
+➕ Follow
+</button>
+
+<button class="edit-btn" onclick="editPost(this)">
+✏️ Edit
+</button>
+
+<button class="delete-btn" onclick="deletePost(this)">
+🗑️ Delete
+</button>
+
+<button class="report-btn" onclick="reportPost()">
+🚩 Report
+</button>
+
+<button class="download-btn" onclick="downloadPost()">
+⬇️ Download
+</button>
+
+<button class="bookmark-btn" onclick="bookmarkPost(this)">
+⭐ Bookmark
+</button>
+
+</div>
+
+</div>
+
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+</head>
+<body>
+
+    <h1>User Profile</h1>
+
+    <img src="nandhini.jpeg" alt="Profile" width="160" height="200">
+
+    <h2>Nandhini</h2>
+
+    <p>Full Stack Developer</p>
+
+    <p>Followers: 250</p>
+
+    <p>Following: 180</p>
+
+    <button>Edit Profile</button>
+
+</body>
+</html>
+<body>
+
+
+<!DOCTYPE html>
+<html>
+<h2>Admin Dashboard</h2>
+
+<p>Total Users : 120</p>
+<p>Total Posts : 560</p>
+<p>Total Reports : 8</p>
+
+<button>Delete User</button>
+<button>Delete Post</button>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+}
+
+.container{
+    width:90%;
+    margin:auto;
+}
+
+@media(max-width:768px){
+    .container{
+        width:100%;
+        padding:10px;
+    }
+
+    .post{
+        width:100%;
+    }
+
+    button{
+        width:100%;
+    }
+}
+button onclick="darkMode()">Dark Mode</button>
+</style>
+
+<script>
+function darkMode(){
+    document.body.classList.toggle("dark");
+}
+
+</script>
+
+<style>
+.dark{
+    background:black;
+    color:white;
+}
+</style>
+<body>
+
+<h2>Nandhini</h2>
+
+<button id="followBtn" onclick="toggleFollow()">
+    Follow
+</button>
+
+<script>
+function toggleFollow(){
+    let btn = document.getElementById("followBtn");
+
+    if(btn.innerText === "Follow"){
+        btn.innerText = "Unfollow";
+    }else{
+        btn.innerText = "Follow";
+    }
+}
+ function sendRequest(){
+    alert("Friend Request Sent");
+}
+
+function acceptRequest(){
+    alert("Friend Request Accepted");
+}
+let count = 0;
+
+function addNotification(){
+    count++;
+    document.getElementById("notify").innerText = count;
+}
+ let followers = 100;
+
+function follow(){
+    followers++;
+    document.getElementById("followers").innerText = followers;
+}
+return JsonResponse(posts, safe=False)
+
+
+</script>
+    </body>
+</html>
+<html>
+<body>
+<script>
+// server.js
+const express = require("express");
+const cors = require("cors");
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+let posts = [];
+
+app.get("/posts", (req, res) => {
+    res.json(posts);
+});
+
+app.post("/posts", (req, res) => {
+    const post = {
+        id: Date.now(),
+        content: req.body.content,
+        likes: 0
+    };
+
+    posts.push(post);
+    res.status(201).json(post);
+});
+
+app.put("/posts/:id/like", (req, res) => {
+    const post = posts.find(
+        p => p.id == req.params.id
+    );
+
+    if (post) {
+        post.likes++;
+        res.json(post);
+    } else {
+        res.status(404).json({ message: "Post not found" });
+    }
+});
+
+app.listen(3000, () => {
+    console.log("Server running on port 3000");
+});
+# views.py
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
+
+posts = []
+
+@csrf_exempt
+def create_post(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        posts.append(data)
+        return JsonResponse(
+            {"message": "Post created"}
+        )
+
+def get_posts(request):
+
+</script>
+</body>
+</html>
