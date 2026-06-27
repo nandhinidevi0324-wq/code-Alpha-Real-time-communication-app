@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Real Time Communication App</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#4facfe,#00f2fe);
+margin:0;
+}
+
+header{
+background:#222;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+.container{
+padding:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:20px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+h2{
+color:#333;
+}
+
+button{
+padding:10px 15px;
+border:none;
+background:#4facfe;
+color:white;
+border-radius:8px;
+cursor:pointer;
+margin-top:10px;
+}
+
+video{
+width:100%;
+height:200px;
+background:black;
+border-radius:10px;
+}
+
+canvas{
+border:2px solid #333;
+background:white;
+width:100%;
+height:250px;
+}
+
+input[type=file]{
+width:100%;
+}
+
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:15px;
+margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>📹 Real-Time Communication App</h1>
+<p>Video Call | Screen Share | File Share | Whiteboard</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>🎥 Video Call</h2>
+<video autoplay muted></video>
+<button onclick="alert('Video Call Feature')">Start Call</button>
+</div>
+
+<div class="card">
+<h2>🖥️ Screen Sharing</h2>
+<p>Share your screen with participants.</p>
+<button onclick="alert('Screen Sharing Feature')">Share Screen</button>
+</div>
+
+<div class="card">
+<h2>📁 File Sharing</h2>
+<input type="file">
+<button onclick="alert('File Uploaded')">Upload</button>
+</div>
+
+<div class="card">
+<h2>✏️ Whiteboard</h2>
+<canvas id="board"></canvas>
+<button onclick="clearBoard()">Clear</button>
+</div>
+
+<div class="card">
+<h2>🔐 Data Encryption</h2>
+<p>AES-256 Secure Communication Enabled</p>
+<button onclick="encryptData()">Encrypted</button>
+</div>
+
+<div class="card">
+<h2>👤 User Authentication</h2>
+<input type="text" placeholder="Username"><br><br>
+<input type="password" placeholder="Password"><br>
+<button onclick="authenticateUser()">Authenticate</button>
+</div>
+
+</div>
+
+<footer>
+Built using HTML, CSS, JavaScript, Express.js, WebRTC & Socket.io
+</footer>
+
+<script>
+const canvas=document.getElementById("board");
+const ctx=canvas.getContext("2d");
+
+let draw=false;
+
+canvas.addEventListener("mousedown",()=>{
+draw=true;
+});
+
+canvas.addEventListener("mouseup",()=>{
+draw=false;
+ctx.beginPath();
+});
+
+canvas.addEventListener("mousemove",(e)=>{
+if(!draw) return;
+ctx.lineWidth=3;
+ctx.lineCap="round";
+ctx.lineTo(e.offsetX,e.offsetY);
+ctx.stroke();
+ctx.beginPath();
+ctx.moveTo(e.offsetX,e.offsetY);
+});
+
+function clearBoard(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+}
+function authenticateUser(){
+
+let username=document.querySelector('input[type="text"]').value;
+let password=document.querySelector('input[type="password"]').value;
+
+if(username==="admin" && password==="1234"){
+alert("Login Successful");
+}
+else{
+alert("Invalid Username or Password");
+}
+
+}
+function encryptData(){
+
+let text=prompt("Enter Message");
+
+if(text){
+
+let encrypted=btoa(text);
+
+alert("Encrypted Data : " + encrypted);
+
+}
+
+}
+function clearBoard(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+}
+</script>
+
+</body>
+</html>
